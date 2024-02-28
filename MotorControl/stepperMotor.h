@@ -14,7 +14,6 @@ class StepperMotorControl {
 
   public:
     StepperMotorControl() {
-      
     }
 
     void setup() {
@@ -27,8 +26,6 @@ class StepperMotorControl {
       if (value < 20) stop();
       else if (value < 60) setSpeed(1);
       else setSpeed(-1);
-      //Serial.print("stepper val=");
-      //Serial.println(value);
     }
 
     void setSpeed(int speed) {
@@ -52,7 +49,6 @@ class StepperMotorControl {
     void printDebug() {
       println(String("stepper ") + " value=" + m_value + " speed=" + m_speed);
     }
-
 };
 
 

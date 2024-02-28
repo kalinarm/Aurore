@@ -6,7 +6,7 @@
 //#define DEBUG // uncomment to slow simulation, and have feedback on serial port
 //#define SERIAL_CONTROL //to uncomment to switch to serial control
 
-#define VERSION "v1.2"
+#define VERSION "v0.8"
 
 float dt = 0.01; // global speed multiplicator of servos mode
 
@@ -33,7 +33,7 @@ float dt = 0.01; // global speed multiplicator of servos mode
 
 ////////////////DMX Config/////////////////
 // first adresse of the board
-#define DMX_START_CHANNEL  10 // for example 10 ,20 ,30 for the 3 grids
+#define DMX_START_CHANNEL  1 // for example 10 ,20 ,30 for the 3 grids
 //count off reserverd channel
 #define DMX_CHANNELS_COUNT   10 
 

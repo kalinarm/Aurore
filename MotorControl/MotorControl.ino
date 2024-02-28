@@ -31,7 +31,6 @@
 #endif
 
 
-
 void setup() {
   
 #ifdef SERIAL_CONTROL

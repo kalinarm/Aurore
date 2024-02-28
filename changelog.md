@@ -3,6 +3,7 @@
 
 ## v0.8
 - transpose X and Y for motor grids
+- set DMX start channel to 1
 
 ## v0.7
 
