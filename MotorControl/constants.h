@@ -32,7 +32,7 @@ float dt = 0.01; // global speed multiplicator of servos mode
 //minimum output of motor
 #define MOTOR_MAX 255
 //for convencience
-#define MOTOR_RANGE (MOTOR_MAX - MOTOR_MIN)
+#define MOTOR_RANGE 255
 
 ////////////////DMX Config/////////////////
 // first adresse of the board
