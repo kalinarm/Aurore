@@ -3,7 +3,6 @@
 #define MODES_H
 
 #include "mode.h"
-//#include "noise.h"
 
 // a mode that set all servos to zero
 class ModeZero : public Mode {

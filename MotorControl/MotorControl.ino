@@ -17,6 +17,8 @@
    Go to tab constants.h to configure this project
 */
 
+//global time variable
+float s_time = 0;
 
 #include <Arduino.h>
 #include "constants.h"

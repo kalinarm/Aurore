@@ -4,8 +4,7 @@
 
 #include "stepperMotor.h"
 
-//global time variable
-float s_time = 0;
+
 
 //define stepper motor
 StepperMotorControl stepperMotor;
