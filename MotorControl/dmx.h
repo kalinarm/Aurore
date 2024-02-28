@@ -26,7 +26,10 @@ void loopDmx() {
 
   int val;
   for (int i = 0; i < DMX_CHANNELS_COUNT ; ++i) {
-    val = map(dmx_slave.getChannelValue (i + 1),0,255,0,100);
+    
+    //val = map(dmx_slave.getChannelValue (i + 1),0,255,0,100);
+    val = dmx_slave.getChannelValue (i + 1);
+    
     if (val != commands[i]) {
       commands[i] = val;
       if (i < STEPPER_COMMAND_INDEX) {

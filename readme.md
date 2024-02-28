@@ -48,7 +48,7 @@ ou l'ensemble des servos moteurs pour leur faire faire des mouvements syncronis√
 
 Le moteur pas √† pas se controle avec cette commande :
 
-**110 [moveDirection] [speed]**
+**300 [moveDirection] [speed]**
 
 avec
 

@@ -30,7 +30,7 @@ ModeWaveY modeWaveY(motors);
 //choose and setup current mode with arguments
 void processCmdMode(int mode, int intensity, int speed, int offset) {
   //choose mode
-  if (mode > 100) {
+  if (mode > 255) {
     return;
   } else if (mode > 90) {
     currentMode = &modeSinusX;
