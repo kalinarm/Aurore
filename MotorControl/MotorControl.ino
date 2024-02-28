@@ -60,7 +60,6 @@ void setup() {
 }
 
 void loop() {
-
 #ifdef SERIAL_CONTROL
   //receive and parse arguments of input from serial. If it's a valid command, it will call processInputCommand
   processInput();

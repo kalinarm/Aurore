@@ -12,6 +12,8 @@
 
 float dt = 0.01; // global speed multiplicator of servos mode
 
+#define CONTROL_MAX 255
+
 ///////////////Grid Offset/////////////////
 #define GRID_X 0 // 0 - 1 - 2 for the 3 grids
 

@@ -29,10 +29,10 @@ class Mode {
     virtual void step(float time) {}
 
     float intensityNorm() {
-      return mapping(intensity,0.0,100.0,0.0,1.0);
+      return mapping(intensity,0.0,CONTROL_MAX,0.0,1.0);
     }
     float speedNorm() {
-      return mapping(speed,0.0,100.0,0.0,2.0);
+      return mapping(speed,0.0,CONTROL_MAX,0.0,2.0);
     }
 
     float mapping(float x, float in_min, float in_max, float out_min, float out_max) {

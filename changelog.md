@@ -8,6 +8,7 @@
 - change accel stepper wiring
 - change input command to 0 - 255 instead of 0 - 100
 - allow to desactivate servo or stepper with define
+- change logic to invert servo motors
 
 ## v0.7
 
