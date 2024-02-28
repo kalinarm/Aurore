@@ -77,7 +77,6 @@ void loop() {
   //make the current mode update if one is defined
   if (currentMode) {
     currentMode->step(time);
-    time += dt;
   }
 #endif
 
@@ -88,5 +87,6 @@ void loop() {
   printMotorArrayDebug();
 #else
   //delay(20);
+  time += dt;
 #endif
 }
