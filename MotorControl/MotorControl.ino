@@ -75,7 +75,7 @@ void loop() {
 #ifdef USE_SERVO_MOTORS
   //make the current mode update if one is defined
   if (currentMode) {
-    currentMode->step(time);
+    currentMode->step(s_time);
   }
 #endif
 
@@ -86,6 +86,6 @@ void loop() {
   printMotorArrayDebug();
 #else
   //delay(20);
-  time += dt;
+  s_time += dt;
 #endif
 }

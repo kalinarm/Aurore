@@ -5,7 +5,7 @@
 #include "stepperMotor.h"
 
 //global time variable
-float time = 0;
+float s_time = 0;
 
 //define stepper motor
 StepperMotorControl stepperMotor;
@@ -57,7 +57,7 @@ void processCmdMode(int mode, int intensity, int speed, int offset) {
   if (!currentMode) return;
 
   if (currentMode != lastMode) {
-    time = 0.0;
+    s_time = 0.0;
     lastMode = currentMode;
     currentMode->enter();
   }

@@ -48,32 +48,32 @@ class ModeSea : public Mode {
 class ModeWaveX : public Mode {
   public :
     ModeWaveX(ServoMotor* _motors) : Mode(_motors) {
-      frequency = 1.0;
+      frequency = 5;
     }
 
     void step(float time) {
-      float t = 5.0 - time * speed;
+      float t = frequency - time * speed;
       float term = t * 0.1;
       for (int i = 0; i < MOTOR_COUNT; ++i) {
         motors[i].setValue(offset + intensity * sin(term + motors[i].globalX) / (term + motors[i].globalX));
       }
-      if (time>5) time = 0;
+      if (s_time > frequency) s_time = 0;
     }
 };
 
 class ModeWaveY : public Mode {
   public :
     ModeWaveY(ServoMotor* _motors) : Mode(_motors) {
-      frequency = 1.0;
+      frequency = 5;
     }
 
     void step(float time) {
-      float t = 5.0 - time * speed;
+      float t = frequency - time * speed;
       float term = t * 0.1;
       for (int i = 0; i < MOTOR_COUNT; ++i) {
         motors[i].setValue(offset + intensity * sin(term + motors[i].globalY) / (term + motors[i].globalY));
       }
-      if (time>5) time = 0;
+      if (s_time > frequency) s_time = 0;
     }
 };
 
