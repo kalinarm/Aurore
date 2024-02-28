@@ -5,6 +5,8 @@
 //////////////General Config///////////////
 //#define DEBUG // uncomment to slow simulation, and have feedback on serial port
 //#define SERIAL_CONTROL //to uncomment to switch to serial control
+#define USE_SERVO_MOTORS
+#define USE_STEPPER_MOTOR
 
 #define VERSION "v0.8"
 
@@ -17,6 +19,7 @@ float dt = 0.01; // global speed multiplicator of servos mode
 #define SERIAL_SPEED 9600
 
 ///////////////Motors Config///////////////
+
 //Amount of motor in X
 #define X_COUNT  9
 //Amount of motor in Y

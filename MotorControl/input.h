@@ -48,7 +48,7 @@ void strToArguments(char* data) {
 #endif
 
   //process arguments
-  if (commands[0] > 100) {
+  if (commands[0] > 255) {
     //the input command is about stepper motor
     //move, speed
     if (argIndex < 1) {

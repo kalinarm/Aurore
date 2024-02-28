@@ -7,6 +7,7 @@
 - change accel stepper configuration
 - change accel stepper wiring
 - change input command to 0 - 255 instead of 0 - 100
+- allow to desactivate servo or stepper with define
 
 ## v0.7
 

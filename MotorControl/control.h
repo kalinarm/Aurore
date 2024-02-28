@@ -29,6 +29,7 @@ ModeWaveY modeWaveY(motors);
 
 //choose and setup current mode with arguments
 void processCmdMode(int mode, int intensity, int speed, int offset) {
+#ifdef USE_SERVO_MOTORS
   //choose mode
   if (mode > 255) {
     return;
@@ -63,15 +64,18 @@ void processCmdMode(int mode, int intensity, int speed, int offset) {
 
   //else we setup mode
   currentMode->configure(intensity, speed, offset);
+#endif
 }
 
 void processCmdStepper(int move) {
+#ifdef USE_STEPPER_MOTOR
   stepperMotor.setCmd(move);
 #ifdef DEBUG
   Serial.print("stepper move=");
   Serial.print(move);
   Serial.print(" speed=");
   Serial.println(speed);
+#endif
 #endif
 }
 

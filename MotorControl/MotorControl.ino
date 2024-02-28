@@ -32,7 +32,7 @@
 
 
 void setup() {
-  
+
 #ifdef SERIAL_CONTROL
   //initialize serial connection
   Serial.begin(SERIAL_SPEED);
@@ -45,40 +45,48 @@ void setup() {
   setupDmx();
 #endif
 
+#ifdef USE_STEPPER_MOTOR
   //configure the stepper
   stepperMotor.setup();
-  
+#endif
+
+#ifdef USE_SERVO_MOTORS
   //configure the motors
   setupMotors();
 
   //print a summerize of motors configuration
   //printMotorDebug();
+#endif
 }
 
 void loop() {
-  
+
 #ifdef SERIAL_CONTROL
   //receive and parse arguments of input from serial. If it's a valid command, it will call processInputCommand
   processInput();
 #else
-  //receive and parse arguments of input from dùx.
+  //receive and parse arguments of input from dmx.
   loopDmx();
 #endif
 
+#ifdef USE_STEPPER_MOTOR
   stepperMotor.loop();
+#endif
 
+#ifdef USE_SERVO_MOTORS
   //make the current mode update if one is defined
   if (currentMode) {
     currentMode->step(time);
     time += dt;
+  }
+#endif
 
 #ifdef DEBUG
-    //for debug
-    delay(500);
-    //printMotorDebug();
-    printMotorArrayDebug();
+  //for debug
+  delay(500);
+  //printMotorDebug();
+  printMotorArrayDebug();
 #else
-    //delay(20);
+  //delay(20);
 #endif
-  }
 }
