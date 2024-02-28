@@ -27,17 +27,6 @@ class Mode {
     virtual void enter() {}
     virtual void exit() {}
     virtual void step(float time) {}
-
-    float intensityNorm() {
-      return mapping(intensity,0.0,255.0,0.0,1.0);
-    }
-    float speedNorm() {
-      return mapping(speed,0.0,255.0,0.0,2.0);
-    }
-
-    float mapping(float x, float in_min, float in_max, float out_min, float out_max) {
-      return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-    }
 };
 
 #endif
