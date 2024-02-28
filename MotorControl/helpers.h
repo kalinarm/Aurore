@@ -21,26 +21,18 @@ void debug(String message) {
 #endif
 }
 
-/*void debug(char* message) {
-  #ifdef DEBUG
-  //Serial.println(message);
-  #endif
-  }*/
-
 // Convert 2d coord to array index
 int GridToArrayCoord(int x, int y) {
-  return x * Y_COUNT + y;
+  return x + y * X_COUNT;
 }
 // Convert array index to x 2d coord
 int ArrayToGridCoordX(int i) {
-  return i % Y_COUNT;
+  return i % X_COUNT;
 }
 // Convert array index to y 2d coord
 int ArrayToGridCoordY(int i) {
-  return i / Y_COUNT;
+  return i / X_COUNT;
 }
-
-
 
 
 #endif

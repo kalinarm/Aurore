@@ -1,6 +1,9 @@
 
 # Changelog
 
+## v0.8
+- transpose X and Y for motor grids
+
 ## v0.7
 
 - change servo address to add inversion of half of servos
