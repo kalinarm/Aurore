@@ -100,3 +100,6 @@ Voici les différents mode, le chiffre au début représente le range de la comm
 | 80 | 90 | SinusY | simule un sinus en Y |
 | 90 | 100 | SinusX | simule un sinus en X |
 
+
+## documentation
+problem with stepper motor : [https://community.element14.com/members-area/personalblogs/b/blog/posts/arduino-controlling-stepper-motor-28byj-48-with-accelstepper-library]

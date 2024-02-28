@@ -6,7 +6,7 @@
 #include "constants.h"
 
 // Defaults to AccelStepper::FULL4WIRE (4 pins) on 2, 3, 4, 5
-AccelStepper stepper(AccelStepper::FULL4WIRE, 2, 3, 4, 5);
+AccelStepper stepper(AccelStepper::HALF4WIRE, 2, 3, 4, 5);
 
 class StepperMotorControl {
     int m_value;
