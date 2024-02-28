@@ -12,8 +12,6 @@
 
 float dt = 0.01; // global speed multiplicator of servos mode
 
-#define CONTROL_MAX 255
-
 ///////////////Grid Offset/////////////////
 #define GRID_X 0 // 0 - 1 - 2 for the 3 grids
 
@@ -34,7 +32,7 @@ float dt = 0.01; // global speed multiplicator of servos mode
 //minimum output of motor
 #define MOTOR_MAX 100
 //for convencience
-#define MOTOR_RANGE 100
+#define MOTOR_RANGE 255
 
 ////////////////DMX Config/////////////////
 // first adresse of the board

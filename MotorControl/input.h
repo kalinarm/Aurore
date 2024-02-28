@@ -15,11 +15,11 @@ void setDefaultCommandArgument() {
   //mode
   commands[0] = 0;
   //intensity
-  commands[1] = 50;
+  commands[1] = 127;
   //speed
-  commands[2] = 50;
+  commands[2] = 127;
   //offset
-  commands[3] = 50;
+  commands[3] = 127;
 }
 
 void strToArguments(char* data) {

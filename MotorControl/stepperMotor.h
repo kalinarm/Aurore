@@ -24,7 +24,7 @@ class StepperMotorControl {
 
     void setCmd(int value) {
       if (value < 20) stop();
-      else if (value < 60) setSpeed(1);
+      else if (value < 126) setSpeed(1);
       else setSpeed(-1);
     }
 

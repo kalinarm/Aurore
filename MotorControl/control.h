@@ -31,7 +31,7 @@ ModeWaveY modeWaveY(motors);
 void processCmdMode(int mode, int intensity, int speed, int offset) {
 #ifdef USE_SERVO_MOTORS
   //choose mode
-  if (mode > 255) {
+  if (mode >= 255) {
     return;
   } else if (mode > 90) {
     currentMode = &modeSinusX;
