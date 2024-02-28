@@ -5,6 +5,7 @@
 - transpose X and Y for motor grids
 - set DMX start channel to 1
 - change accel stepper configuration
+- change accel stepper wiring
 
 ## v0.7
 
