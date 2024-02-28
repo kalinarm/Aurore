@@ -4,6 +4,7 @@
 ## v0.8
 - transpose X and Y for motor grids
 - set DMX start channel to 1
+- change accel stepper configuration
 
 ## v0.7
 
