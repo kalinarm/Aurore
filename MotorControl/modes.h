@@ -164,13 +164,13 @@ class ModeIcePack : public Mode {
         motors[i].setValue(MOTOR_RANGE * 0.5);
       }
 
-      motors[6].setGoal(MOTOR_MAX);
-      motors[2].setGoal(MOTOR_MAX);
+      motors[5].setGoal(MOTOR_MAX);
+      motors[1].setGoal(MOTOR_MAX);
 
-      motors[7].setGoal(MOTOR_MIN);
-      motors[9].setGoal(MOTOR_MIN);
-      motors[12].setGoal(MOTOR_MIN);
-      motors[22].setGoal(MOTOR_MIN);
+      motors[6].setGoal(MOTOR_MIN);
+      motors[8].setGoal(MOTOR_MIN);
+      motors[11].setGoal(MOTOR_MIN);
+      motors[21].setGoal(MOTOR_MIN);
     }
 
     void step(float time) {
@@ -179,12 +179,12 @@ class ModeIcePack : public Mode {
       }
       lastOffset = offset;
 
-      if (offset > 30) setMotorToGoal(9);
-      if (offset > 60) setMotorToGoal(6);
-      if (offset > 90) setMotorToGoal(12);
-      if (offset > 120) setMotorToGoal(7);
-      if (offset > 150) setMotorToGoal(22);
-      if (offset > 180) setMotorToGoal(2);
+      if (offset > 30) setMotorToGoal(8);
+      if (offset > 60) setMotorToGoal(5);
+      if (offset > 90) setMotorToGoal(11);
+      if (offset > 120) setMotorToGoal(6);
+      if (offset > 150) setMotorToGoal(21);
+      if (offset > 180) setMotorToGoal(1);
 
     }
 
