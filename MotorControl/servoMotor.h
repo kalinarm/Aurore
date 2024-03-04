@@ -52,7 +52,7 @@ class ServoMotor {
         pwm = pwm0;
         m_localIndex = m_index;
       }
-      invert = (m_index > 13) ? true : false;
+      invert = (m_index > 13) ? false : true;
     }
     void setValue(int value)
     {
