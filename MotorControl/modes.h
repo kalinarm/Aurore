@@ -18,10 +18,18 @@ class ModeZero : public Mode {
 
 //mode that set all servos to offset
 class ModeUniform : public Mode {
+    int lastOffset;
   public :
-    ModeUniform(ServoMotor* _motors) : Mode(_motors) { }
+    ModeUniform(ServoMotor* _motors) : Mode(_motors) {
+      lastOffset = 0;
+    }
 
     void step(float time) {
+      if (offset == lastOffset) {
+        return;
+      }
+      lastOffset = offset;
+
       for (int i = 0; i < MOTOR_COUNT; ++i) {
         motors[i].setValue(offset);
       }
@@ -138,14 +146,26 @@ class ModeRandom : public Mode {
 //Enclenchement du/des moteur pas à pas pour créer un volume central.
 //Petite animation avec des "effondrement de glace". Un mouvement de cerveau moteur dans un temps aléatoire avec un choix de moteur aléatoire.
 class ModeIcePack : public Mode {
+    int lastOffset;
   public :
-    ModeIcePack(ServoMotor* _motors) : Mode(_motors) { }
+    ModeIcePack(ServoMotor* _motors) : Mode(_motors) {
+      lastOffset = 0;
+    }
     void enter() {
       int val;
+
       for (int i = 0; i < MOTOR_COUNT; ++i) {
-        motors[i].setValue(random(MOTOR_MIN, MOTOR_MAX));
+        motors[i].setValueNorm(0.5);
         motors[i].setGoal(random(0, 100));
       }
+
+      motors[6].setValueNorm(1);
+      motors[2].setValueNorm(1);
+      motors[7].setValueNorm(0);
+      motors[9].setValueNorm(0);
+      motors[12].setValueNorm(0);
+      motors[22].setValueNorm(0);
+
     }
 
     void step(float time) {
@@ -155,9 +175,14 @@ class ModeIcePack : public Mode {
       Serial.print(offset);
       Serial.println(offset);
 #endif
+      if (offset == lastOffset) {
+        return;
+      }
+      lastOffset = offset;
+
       for (int i = 0; i < MOTOR_COUNT; ++i) {
-        if (motors[i].getGoal() < offset) {
-          motors[i].setValue(0);
+        if (motors[i].getGoal() > offset) {
+          motors[i].setValueNorm(0.5);
         }
       }
     }
