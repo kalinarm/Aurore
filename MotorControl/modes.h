@@ -155,8 +155,11 @@ class ModeIcePack : public Mode {
       int val;
 
       for (int i = 0; i < MOTOR_COUNT; ++i) {
+        motors[i].setGoal(random(10, 90));
+        if (i == 6 || i == 2 || i == 7 || i == 9 || i == 12 || i == 22) {
+          continue;
+        }
         motors[i].setValueNorm(0.5);
-        motors[i].setGoal(random(0, 100));
       }
 
       motors[6].setValueNorm(1);
@@ -168,7 +171,7 @@ class ModeIcePack : public Mode {
 
     }
 
-    void step(float time) {
+   /* void step(float time) {
 #ifdef DEBUG
       Serial.print("mode IcePack");
       Serial.print(" offset=");
@@ -185,6 +188,6 @@ class ModeIcePack : public Mode {
           motors[i].setValueNorm(0.5);
         }
       }
-    }
+    }*/
 };
 #endif
