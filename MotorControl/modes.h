@@ -24,7 +24,7 @@ class ModeUniform : public Mode {
       lastOffset = 0;
     }
     void enter() {
-      lastOffset = offset;
+      lastOffset = -1;
     }
     void step(float time) {
       if (offset == lastOffset) {
@@ -154,42 +154,43 @@ class ModeIcePack : public Mode {
       lastOffset = 0;
     }
     void enter() {
-      lastOffset = offset;
+      lastOffset = -1;
       int val;
 
       for (int i = 0; i < MOTOR_COUNT; ++i) {
-        motors[i].setGoal(random(10, 90));
+        //motors[i].setGoal(random(10, 90));
         if (i == 6 || i == 2 || i == 7 || i == 9 || i == 12 || i == 22) {
           continue;
         }
-        motors[i].setValueNorm(0.5);
+        motors[i].setValue(MOTOR_RANGE * 0.5);
       }
 
-      motors[6].setValueNorm(1);
-      motors[2].setValueNorm(1);
-      motors[7].setValueNorm(0);
-      motors[9].setValueNorm(0);
-      motors[12].setValueNorm(0);
-      motors[22].setValueNorm(0);
+      motors[6].setValue(MOTOR_MAX);
+      motors[2].setValue(MOTOR_MAX);
+
+      motors[7].setValue(MOTOR_MIN);
+      motors[9].setValue(MOTOR_MIN);
+      motors[12].setValue(MOTOR_MIN);
+      motors[22].setValue(MOTOR_MIN);
     }
 
-     void step(float time) {
-      #ifdef DEBUG
-       Serial.print("mode IcePack");
-       Serial.print(" offset=");
-       Serial.print(offset);
-       Serial.println(offset);
-      #endif
-       if (offset == lastOffset) {
-         return;
-       }
-       lastOffset = offset;
-
-       for (int i = 0; i < MOTOR_COUNT; ++i) {
-         if (motors[i].getGoal() > offset) {
-           motors[i].setValueNorm(0.5);
-         }
-       }
+    /*void step(float time) {
+#ifdef DEBUG
+      Serial.print("mode IcePack");
+      Serial.print(" offset=");
+      Serial.print(offset);
+      Serial.println(offset);
+#endif
+      if (offset == lastOffset) {
+        return;
       }
+      lastOffset = offset;
+
+      for (int i = 0; i < MOTOR_COUNT; ++i) {
+        if (motors[i].getGoal() > offset) {
+          motors[i].setValueNorm(0.5);
+        }
+      }
+    }*/
 };
 #endif
