@@ -23,7 +23,9 @@ class ModeUniform : public Mode {
     ModeUniform(ServoMotor* _motors) : Mode(_motors) {
       lastOffset = 0;
     }
-
+    void enter() {
+      lastOffset = offset;
+    }
     void step(float time) {
       if (offset == lastOffset) {
         return;
@@ -152,6 +154,7 @@ class ModeIcePack : public Mode {
       lastOffset = 0;
     }
     void enter() {
+      lastOffset = offset;
       int val;
 
       for (int i = 0; i < MOTOR_COUNT; ++i) {
@@ -168,26 +171,25 @@ class ModeIcePack : public Mode {
       motors[9].setValueNorm(0);
       motors[12].setValueNorm(0);
       motors[22].setValueNorm(0);
-
     }
 
-   /* void step(float time) {
-#ifdef DEBUG
-      Serial.print("mode IcePack");
-      Serial.print(" offset=");
-      Serial.print(offset);
-      Serial.println(offset);
-#endif
-      if (offset == lastOffset) {
-        return;
-      }
-      lastOffset = offset;
+     void step(float time) {
+      #ifdef DEBUG
+       Serial.print("mode IcePack");
+       Serial.print(" offset=");
+       Serial.print(offset);
+       Serial.println(offset);
+      #endif
+       if (offset == lastOffset) {
+         return;
+       }
+       lastOffset = offset;
 
-      for (int i = 0; i < MOTOR_COUNT; ++i) {
-        if (motors[i].getGoal() > offset) {
-          motors[i].setValueNorm(0.5);
-        }
+       for (int i = 0; i < MOTOR_COUNT; ++i) {
+         if (motors[i].getGoal() > offset) {
+           motors[i].setValueNorm(0.5);
+         }
+       }
       }
-    }*/
 };
 #endif

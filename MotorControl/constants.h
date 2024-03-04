@@ -4,7 +4,7 @@
 
 //////////////General Config///////////////
 //#define DEBUG // uncomment to slow simulation, and have feedback on serial port
-//#define SERIAL_CONTROL //to uncomment to switch to serial control
+//#define SERIAL_CONTROL //uncomment to switch to serial control
 #define USE_SERVO_MOTORS
 #define USE_STEPPER_MOTOR
 

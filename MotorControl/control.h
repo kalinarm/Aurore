@@ -58,7 +58,9 @@ void processCmdMode(int mode, int intensity, int speed, int offset) {
   if (currentMode != lastMode) {
     s_time = 0.0;
     lastMode = currentMode;
+    currentMode->configure(intensity, speed, offset);
     currentMode->enter();
+    return;
   }
 
   //else we setup mode
@@ -72,8 +74,6 @@ void processCmdStepper(int move) {
 #ifdef DEBUG
   Serial.print("stepper move=");
   Serial.print(move);
-  Serial.print(" speed=");
-  Serial.println(speed);
 #endif
 #endif
 }
