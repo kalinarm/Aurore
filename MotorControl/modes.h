@@ -48,8 +48,8 @@ class ModeSea : public Mode {
       for (int i = 0; i < MOTOR_COUNT; ++i) {
         index = motors[i].globalX + motors[i].globalY;
         motors[i].setValue(offset
-                           + intensity * sin((time * speed * 0.05) + index)
-                           + 0.5 * intensity * sin((time * speed * 0.8) + (index)));
+                           + intensity * sin(speed * 0.003 * (time + index)
+                           + 0.5 * intensity * sin(speed * 0.001 *(time + index)));
       }
     }
 };
@@ -59,16 +59,16 @@ class ModeWaveX : public Mode {
     ModeWaveX(ServoMotor* _motors) : Mode(_motors) {}
 
     void enter() {
-      frequency = 5;
+      frequency = 10;
     }
 
     void step(float time) {
-      float t = frequency - time * speed;
-      float term = t * 0.1;
+      float t = frequency - time;
+      float term = t * 0.1 * speed;
       for (int i = 0; i < MOTOR_COUNT; ++i) {
         motors[i].setValue(offset + intensity * sin(term + motors[i].globalX) / (term + motors[i].globalX));
       }
-      if (s_time > frequency) s_time = 0;
+      if (s_time > 2 * frequency) s_time = 0;
     }
 };
 
@@ -244,9 +244,6 @@ class ModeIcePack2 : public Mode {
       if (offset > 120) setMotorToGoal(6);
       if (offset > 150) setMotorToGoal(21);
       if (offset > 180) setMotorToGoal(1);
-
-
-
     }
 
     void setMotorToGoal(int index) {
