@@ -14,7 +14,7 @@ float dt = 0.01; // global speed multiplicator of servos mode
 #define SERIAL_SPEED 9600
 
 ///////////////Motors Config///////////////
-
+#define STEPPERS_STEPS_DISTANCE 600
 #define STEPPERS_MAX_SPEED 900
 #define STEPPERS_ACCELERATION 500
 

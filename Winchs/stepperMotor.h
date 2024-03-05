@@ -59,12 +59,6 @@ class StepperMotorControl {
         stepper.stop();
         return;
       }
-
-      if (m_speed > 0) {
-        stepper.move(m_speed * m_sens);
-      } else  if (m_speed < 0) {
-        stepper.move(-m_speed * m_sens);
-      }
       stepper.run();
     }
 
@@ -90,23 +84,14 @@ class StepperMotorControl {
         case CALIB_PHASE_2:
           stepper.run();
           if (stepper.distanceToGo() == 0) {
-            setActive(false);
-            m_isCalibrating = CALIB_OFF;
+            stepper.stop();
+            stopCalibrating();
           }
           break;
       }
     }
 
-    void setSpeed(int speed) {
-      m_speed = speed;
-      stepper.setSpeed(m_speed);
-    }
-
-    void stop() {
-      m_speed = 0;
-      stepper.stop();
-    }
-
+    //start the calibration state
     void startCalibrating() {
 #ifdef DEBUG
       Serial.print("start calibration");
@@ -114,10 +99,9 @@ class StepperMotorControl {
       m_isCalibrating = CALIB_PHASE_1;
     }
 
-    void nextCalibratingPhase() {
-      if (++m_isCalibrating > CALIB_PHASE_2) {
-        m_isCalibrating = CALIB_OFF;
-      }
+    // stop the calibration state
+    void stopCalibrating() {
+      m_isCalibrating = CALIB_OFF;
     }
 
     bool isCalibrating() {
@@ -128,18 +112,39 @@ class StepperMotorControl {
       println(String("stepper ") + " value=" + m_value + " speed=" + m_speed);
     }
 
-    void setCmd(int sensCmd, int speedCmd, int calibrateCmd) {
-      //process sensCmd
-      setActive(sensCmd > 20);
-      if (sensCmd > 127) {
-        setSpeed(map(speedCmd, 21, 255, 0, STEPPERS_MAX_SPEED));
-      } else if (sensCmd > 20) {
-        setSpeed(map(speedCmd, 21, 255, 0, -STEPPERS_MAX_SPEED));
+    void setCmd(int sensCmd, int posCmd, int calibrateCmd) {
+      if (sensCmd <= 20) {
+        stepper.stop();
+        setActive(false);
+        stopCalibrating();
+        return;
       }
+
+      setActive(true);
 
       if (!isCalibrating() && calibrateCmd > 250) {
         startCalibrating();
+        return;
       }
+      int direction = 1;
+      int speed = 0;
+      if (sensCmd > 127) {
+        direction = 1;
+        speed = map(sensCmd, 128, 255, 0, STEPPERS_MAX_SPEED);
+      }else {
+        direction = -1;
+        speed = map(sensCmd, 21, 127, 0, STEPPERS_MAX_SPEED);
+      }
+      long pos = direction * -m_sens * map(posCmd, 0, 255, 0.0, STEPPERS_STEPS_DISTANCE);
+      stepper.moveTo(pos);
+      stepper.setSpeed(speed);
+
+#ifdef DEBUG
+      Serial.print("pos=");
+      Serial.print(pos);
+      Serial.print(" speed=");
+      Serial.println(speed);
+#endif
     }
 };
 
