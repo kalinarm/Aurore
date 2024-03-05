@@ -8,7 +8,7 @@
 #define USE_SERVO_MOTORS
 #define USE_STEPPER_MOTOR
 
-#define VERSION "v0.8"
+#define VERSION "v0.9"
 
 float dt = 0.01; // global speed multiplicator of servos mode
 

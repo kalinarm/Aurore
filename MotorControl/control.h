@@ -25,6 +25,7 @@ ModeRandom modeRandom(motors);
 ModeIcePack modeIcePack(motors);
 ModeWaveX modeWaveX(motors);
 ModeWaveY modeWaveY(motors);
+ModeIcePack2 modeIcePack2(motors);
 
 //choose and setup current mode with arguments
 void processCmdMode(int mode, int intensity, int speed, int offset) {
@@ -32,6 +33,8 @@ void processCmdMode(int mode, int intensity, int speed, int offset) {
   //choose mode
   if (mode >= 255) {
     return;
+  }else if (mode > 100) {
+    currentMode = &modeIcePack2;
   } else if (mode > 90) {
     currentMode = &modeSinusX;
   } else if (mode > 80) {

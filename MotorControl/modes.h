@@ -48,16 +48,18 @@ class ModeSea : public Mode {
       for (int i = 0; i < MOTOR_COUNT; ++i) {
         index = motors[i].globalX + motors[i].globalY;
         motors[i].setValue(offset
-                           + intensity * sin((time * speed * 0.1) + index)
-                           + 0.5 * intensity * sin((time * speed * 1.7) + (index)));
+                           + intensity * sin((time * speed * 0.05) + index)
+                           + 0.5 * intensity * sin((time * speed * 0.8) + (index)));
       }
     }
 };
 
 class ModeWaveX : public Mode {
   public :
-    ModeWaveX(ServoMotor* _motors) : Mode(_motors) {
-      frequency = 5;
+    ModeWaveX(ServoMotor* _motors) : Mode(_motors) {}
+
+    void enter() {
+      frequency = 10;
     }
 
     void step(float time) {
@@ -185,6 +187,63 @@ class ModeIcePack : public Mode {
       if (offset > 120) setMotorToGoal(6);
       if (offset > 150) setMotorToGoal(21);
       if (offset > 180) setMotorToGoal(1);
+
+    }
+
+    void setMotorToGoal(int index) {
+      motors[index].setValue(motors[index].getGoal());
+    }
+};
+
+
+class ModeIcePack2 : public Mode {
+    int lastOffset;
+  public :
+    ModeIcePack2(ServoMotor* _motors) : Mode(_motors) {
+      lastOffset = 0;
+    }
+    void enter() {
+      lastOffset = -1;
+      int val;
+
+      for (int i = 0; i < MOTOR_COUNT; ++i) {
+        /* */
+        motors[i].setValue(MOTOR_RANGE * 0.5);
+      }
+
+      motors[5].setGoal(MOTOR_MAX);
+      motors[1].setGoal(MOTOR_MAX);
+
+      motors[6].setGoal(MOTOR_MIN);
+      motors[8].setGoal(MOTOR_MIN);
+      motors[11].setGoal(MOTOR_MIN);
+      motors[21].setGoal(MOTOR_MIN);
+    }
+
+    void step(float time) {
+
+
+      for (int i = 0; i < MOTOR_COUNT; ++i) {
+        if (i == 6 || i == 2 || i == 7 || i == 9 || i == 12 || i == 22) {
+          continue;
+        }
+        motors[i].setValue(intensity * sin((time * speed * 0.05) + motors[i].globalY));
+      }
+
+
+      if (offset == lastOffset) {
+        return;
+      }
+      lastOffset = offset;
+
+      if (offset > 30) setMotorToGoal(8);
+      if (offset > 60) setMotorToGoal(5);
+      if (offset > 90) setMotorToGoal(11);
+      if (offset > 120) setMotorToGoal(6);
+      if (offset > 150) setMotorToGoal(21);
+      if (offset > 180) setMotorToGoal(1);
+
+
 
     }
 
