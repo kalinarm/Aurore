@@ -49,7 +49,7 @@ class ModeSea : public Mode {
         index = motors[i].globalX + motors[i].globalY;
         motors[i].setValue(offset
                            + intensity * sin(speed * 0.003 * (time + index)
-                           + 0.5 * intensity * sin(speed * 0.001 *(time + index)));
+                           + 0.5 * intensity * sin(speed * 0.001 *(time + index))));
       }
     }
 };
