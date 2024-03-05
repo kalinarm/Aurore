@@ -24,13 +24,15 @@ float dt = 0.01; // global speed multiplicator of servos mode
 #define STEPPER_A_ENABLE 8
 #define STEPPER_A_STEP 9
 #define STEPPER_A_DIR 10
-#define STEPPER_A_LIMIT 13
+#define STEPPER_A_LIMIT 5
+
 #define STEPPER_A_INVERT 1
 
-#define STEPPER_B_ENABLE 2
-#define STEPPER_B_STEP 3
-#define STEPPER_B_DIR 4
-#define STEPPER_B_LIMIT 12
+#define STEPPER_B_ENABLE 11
+#define STEPPER_B_STEP 12
+#define STEPPER_B_DIR 13
+#define STEPPER_B_LIMIT 6
+
 #define STEPPER_B_INVERT -1
 
 ////////////////DMX Config/////////////////

@@ -99,6 +99,7 @@ class StepperMotorControl {
 
     void setSpeed(int speed) {
       m_speed = speed;
+      stepper.setSpeed(m_speed);
     }
 
     void stop() {
