@@ -59,7 +59,7 @@ class ModeWaveX : public Mode {
     ModeWaveX(ServoMotor* _motors) : Mode(_motors) {}
 
     void enter() {
-      frequency = 10;
+      frequency = 5;
     }
 
     void step(float time) {
@@ -74,7 +74,9 @@ class ModeWaveX : public Mode {
 
 class ModeWaveY : public Mode {
   public :
-    ModeWaveY(ServoMotor* _motors) : Mode(_motors) {
+    ModeWaveY(ServoMotor* _motors) : Mode(_motors) {}
+
+    void enter() {
       frequency = 5;
     }
 
@@ -227,7 +229,7 @@ class ModeIcePack2 : public Mode {
         if (i == 6 || i == 2 || i == 7 || i == 9 || i == 12 || i == 22) {
           continue;
         }
-        motors[i].setValue(intensity * sin((time * speed * 0.05) + motors[i].globalY));
+        motors[i].setValue(intensity * sin((time * speed * 0.001) + motors[i].globalY));
       }
 
 
