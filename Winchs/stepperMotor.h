@@ -75,13 +75,16 @@ class StepperMotorControl {
       switch (m_isCalibrating) {
         case CALIB_PHASE_1:
           if (checkSecurity()) {
+            //finish phase 1, switch to phase 2
             stepper.stop();
             m_isCalibrating = CALIB_PHASE_2;
             stepper.setCurrentPosition(0);
             stepper.moveTo(CALIB_STEPS_AFTER * m_sens);
+            stepper.setSpeed(CALIB_SPEED);
           }
           setActive(true);
-          stepper.move(-CALIB_SPEED * m_sens);
+          stepper.move(-m_sens * 10);
+          stepper.setSpeed(CALIB_SPEED);
           stepper.run();
           break;
         case CALIB_PHASE_2:
