@@ -23,9 +23,9 @@ void setDefaultCommandArgument() {
   //B enable/sens
   commands[3] = 0;
   //B speed
-  commands[7] = 127;
+  commands[4] = 127;
   //B calibrate
-  commands[8] = 0;
+  commands[5] = 0;
 
 }
 

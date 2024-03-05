@@ -37,7 +37,7 @@ float dt = 0.01; // global speed multiplicator of servos mode
 // first adresse of the board
 #define DMX_START_CHANNEL  1 // for example 10 ,20 ,30 for the 3 grids
 //count off reserverd channel
-#define DMX_CHANNELS_COUNT   10 
+#define DMX_CHANNELS_COUNT   6 
 
 ///////////////GPIO Config/////////////////
 

@@ -59,7 +59,7 @@ class ModeWaveX : public Mode {
     ModeWaveX(ServoMotor* _motors) : Mode(_motors) {}
 
     void enter() {
-      frequency = 10;
+      frequency = 15;
     }
 
     void step(float time) {
