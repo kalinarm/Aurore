@@ -35,6 +35,8 @@ float dt = 0.01; // global speed multiplicator of servos mode
 
 #define STEPPER_B_INVERT -1
 
+#define USE_LIMIT_SWITCH_PULL_UP // or pull down by default
+
 ////////////////DMX Config/////////////////
 // first adresse of the board
 #define DMX_START_CHANNEL  1 // for example 10 ,20 ,30 for the 3 grids

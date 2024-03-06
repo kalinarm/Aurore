@@ -28,7 +28,14 @@ class StepperMotorControl {
       m_sens = invert;
 
       pinMode(m_enablePin, OUTPUT);
+
+#ifdef USE_LIMIT_SWITCH_PULL_UP
+      pinMode(m_limitPin, INPUT_PULLUP);
+#else
       pinMode(m_limitPin, INPUT);
+#endif
+
+
       stepper = AccelStepper(AccelStepper::DRIVER, stepPin, dirPin);
     }
 
@@ -47,7 +54,12 @@ class StepperMotorControl {
     }
 
     bool checkSecurity() {
+#ifdef USE_LIMIT_SWITCH_PULL_UP
       bool limitReached = digitalRead(m_limitPin);
+#else
+      bool limitReached = !digitalRead(m_limitPin);
+#endif
+
       return limitReached;
     }
 
@@ -126,16 +138,9 @@ class StepperMotorControl {
         startCalibrating();
         return;
       }
-      int direction = 1;
-      int speed = 0;
-      if (sensCmd > 127) {
-        direction = 1;
-        speed = map(sensCmd, 128, 255, 0, STEPPERS_MAX_SPEED);
-      }else {
-        direction = -1;
-        speed = map(sensCmd, 21, 127, 0, STEPPERS_MAX_SPEED);
-      }
-      long pos = direction * -m_sens * map(posCmd, 0, 255, 0.0, STEPPERS_STEPS_DISTANCE);
+
+      int  speed = map(sensCmd, 21, 255, 0, STEPPERS_MAX_SPEED);
+      long pos = m_sens * map(posCmd, 0, 255, 0.0, STEPPERS_STEPS_DISTANCE);
       stepper.moveTo(pos);
       stepper.setSpeed(speed);
 
