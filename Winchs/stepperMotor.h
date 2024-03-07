@@ -71,7 +71,7 @@ class StepperMotorControl {
         stepper.stop();
         return;
       }
-      stepper.run();
+      stepper.runSpeedToPosition();
     }
 
     bool loopCalibrating() {
@@ -94,7 +94,7 @@ class StepperMotorControl {
           stepper.run();
           break;
         case CALIB_PHASE_2:
-          stepper.run();
+          stepper.runSpeedToPosition();
           if (stepper.distanceToGo() == 0) {
             stepper.stop();
             stopCalibrating();
