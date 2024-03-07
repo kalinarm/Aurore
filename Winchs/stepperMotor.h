@@ -87,12 +87,14 @@ class StepperMotorControl {
             stepper.setCurrentPosition(0);
             stepper.moveTo(CALIB_STEPS_AFTER * m_sens);
             stepper.setSpeed(CALIB_SPEED);
+            return true;
           }
           setActive(true);
           stepper.move(-m_sens * 10);
           stepper.setSpeed(CALIB_SPEED);
           stepper.runSpeedToPosition();
           break;
+          
         case CALIB_PHASE_2:
           stepper.runSpeedToPosition();
           if (stepper.distanceToGo() == 0) {
@@ -101,6 +103,7 @@ class StepperMotorControl {
           }
           break;
       }
+      return true;
     }
 
     //start the calibration state
