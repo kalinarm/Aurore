@@ -13,6 +13,8 @@ float dt = 0.01; // global speed multiplicator of servos mode
 ///////////////Serial Config///////////////
 #define SERIAL_SPEED 9600
 
+#define INTERNAL_LED 13
+
 ///////////////Motors Config///////////////
 #define STEPPERS_STEPS_DISTANCE 600
 #define STEPPERS_MAX_SPEED 900
@@ -35,7 +37,7 @@ float dt = 0.01; // global speed multiplicator of servos mode
 
 #define STEPPER_B_INVERT -1
 
-#define USE_LIMIT_SWITCH_PULL_UP // or pull down by default
+//#define USE_LIMIT_SWITCH_PULL_UP // or pull down by default
 
 ////////////////DMX Config/////////////////
 // first adresse of the board

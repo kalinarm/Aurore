@@ -11,6 +11,10 @@
 
 
 void setup() {
+  pinMode(INTERNAL_LED, OUTPUT);
+  digitalWrite(INTERNAL_LED, HIGH);
+  delay(200);
+  digitalWrite(INTERNAL_LED, LOW);
 
 #ifdef SERIAL_CONTROL
   Serial.begin(SERIAL_SPEED);

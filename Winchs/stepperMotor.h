@@ -94,7 +94,7 @@ class StepperMotorControl {
           stepper.setSpeed(CALIB_SPEED);
           stepper.runSpeedToPosition();
           break;
-          
+
         case CALIB_PHASE_2:
           stepper.runSpeedToPosition();
           if (stepper.distanceToGo() == 0) {
@@ -112,11 +112,16 @@ class StepperMotorControl {
       Serial.print("start calibration");
 #endif
       m_isCalibrating = CALIB_PHASE_1;
+      digitalWrite(INTERNAL_LED, HIGH);
     }
 
     // stop the calibration state
     void stopCalibrating() {
       m_isCalibrating = CALIB_OFF;
+#ifdef DEBUG
+      Serial.print("start calibration");
+#endif
+      digitalWrite(INTERNAL_LED, LOW);
     }
 
     bool isCalibrating() {
