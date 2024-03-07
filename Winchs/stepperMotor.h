@@ -91,7 +91,7 @@ class StepperMotorControl {
           setActive(true);
           stepper.move(-m_sens * 10);
           stepper.setSpeed(CALIB_SPEED);
-          stepper.run();
+          stepper.runSpeedToPosition();
           break;
         case CALIB_PHASE_2:
           stepper.runSpeedToPosition();
