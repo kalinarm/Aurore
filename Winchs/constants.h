@@ -22,7 +22,7 @@ float dt = 0.01; // global speed multiplicator of servos mode
 ///////////////Motors Config///////////////
 
 #define STEPS_PER_REVOLUTION 400
-#define MM_PER_REVOLUTION 31.4
+#define MM_PER_REVOLUTION 34.8 //31.4 theorically
 
 #define STEPPERS_STEPS_DISTANCE (MOTOR_RANGE_MM * (STEPS_PER_REVOLUTION / MM_PER_REVOLUTION))
 
