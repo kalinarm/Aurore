@@ -15,8 +15,17 @@ float dt = 0.01; // global speed multiplicator of servos mode
 
 #define INTERNAL_LED 13
 
+
+///////////////Global Config///////////////
+#define MOTOR_RANGE_MM 1350
+
 ///////////////Motors Config///////////////
-#define STEPPERS_STEPS_DISTANCE 600
+
+#define STEPS_PER_REVOLUTION 400
+#define MM_PER_REVOLUTION 31.4
+
+#define STEPPERS_STEPS_DISTANCE (MOTOR_RANGE_MM * (STEPS_PER_REVOLUTION / MM_PER_REVOLUTION))
+
 #define STEPPERS_MAX_SPEED 900
 #define STEPPERS_ACCELERATION 500
 
