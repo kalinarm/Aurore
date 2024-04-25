@@ -139,7 +139,7 @@ class ModeRandom : public Mode {
       int maxVal = MOTOR_RANGE * 0.5  + intensity * 0.01 * MOTOR_RANGE  * 0.5 + offset;
       for (int i = 0; i < MOTOR_COUNT; ++i) {
         //advance to goal position and choose a new goal if on goal pos
-        if (motors[i].stepToGoal(speed * 0.01)) {
+        if (motors[i].stepToGoal(speed * 0.001)) {
           motors[i].setGoal(random(minVal, maxVal));
         }
       }
