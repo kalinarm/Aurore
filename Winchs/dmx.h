@@ -33,7 +33,7 @@ void loopDmx() {
 
   if (hasInputChanged) {
     processCmdStepperA(commands[3], commands[4], commands[5]);
-    processCmdStepperB(commands[1], commands[2], commands[3]);
+    processCmdStepperB(commands[0], commands[1], commands[2]);
     hasInputChanged = false;
   }
 }
