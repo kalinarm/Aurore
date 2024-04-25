@@ -85,13 +85,13 @@ class StepperMotorControl {
             stepper.stop();
             m_isCalibrating = CALIB_PHASE_2;
             stepper.setCurrentPosition(0);
-            stepper.moveTo(CALIB_STEPS_AFTER * m_sens);
-            stepper.setSpeed(-m_sens * CALIB_SPEED);
+            stepper.moveTo(-CALIB_STEPS_AFTER * m_sens);
+            stepper.setSpeed(m_sens * CALIB_SPEED);
             return true;
           }
           setActive(true);
-          stepper.move(-m_sens * 10);
-          stepper.setSpeed(-m_sens * CALIB_SPEED);
+          stepper.move(m_sens * 10);
+          stepper.setSpeed(m_sens * CALIB_SPEED);
           stepper.runSpeedToPosition();
           break;
 

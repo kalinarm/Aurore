@@ -30,7 +30,7 @@ float dt = 0.01; // global speed multiplicator of servos mode
 #define STEPPERS_ACCELERATION 500
 
 #define CALIB_SPEED 100
-#define CALIB_STEPS_AFTER 50
+#define CALIB_STEPS_AFTER 200
 
 #define STEPPER_A_ENABLE 8
 #define STEPPER_A_STEP 9
