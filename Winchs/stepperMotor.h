@@ -84,7 +84,7 @@ class StepperMotorControl {
             //finish phase 1, switch to phase 2
             stepper.stop();
             m_isCalibrating = CALIB_PHASE_2;
-            stepper.setCurrentPosition(0);
+            stepper.setCurrentPosition(STEPPERS_STEPS_DISTANCE);
             stepper.moveTo(-CALIB_STEPS_AFTER * m_sens);
             stepper.setSpeed(m_sens * CALIB_SPEED);
             return true;
