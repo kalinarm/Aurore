@@ -88,12 +88,12 @@ class StepperMotorControl {
             m_isCalibrating = CALIB_PHASE_2;
             stepper.setCurrentPosition(0);
             stepper.moveTo(-CALIB_STEPS_AFTER * m_sens);
-            stepper.setSpeed(m_sens * CALIB_SPEED);
+            stepper.setMaxSpeed(CALIB_SPEED);
             return true;
           }
           setActive(true);
           stepper.move(m_sens * 10);
-          stepper.setSpeed(m_sens * CALIB_SPEED);
+          stepper.setMaxSpeed(CALIB_SPEED);
           stepper.runSpeedToPosition();
           break;
 
@@ -151,10 +151,8 @@ class StepperMotorControl {
 
       int  speed = map(sensCmd, 21, 255, 0, STEPPERS_MAX_SPEED);
       long pos = map(posCmd, 0, 255, 0.0, STEPPERS_STEPS_DISTANCE);
-      stepper.moveTo(pos * m_sens);
-      
-      //uncomment this to control speed
-      //stepper.setSpeed(-m_sens * speed * sgn(pos * m_sens - pos * stepper.currentPosition()));
+      stepper.moveTo(-pos * m_sens);
+      stepper.setMaxSpeed(speed);
 
 #ifdef DEBUG
       Serial.print("pos=");
