@@ -46,7 +46,7 @@ float dt = 0.01; // global speed multiplicator of servos mode
 
 #define STEPPER_B_INVERT -1
 
-//#define USE_LIMIT_SWITCH_PULL_UP // or pull down by default
+#define USE_LIMIT_SWITCH_PULL_UP // or pull down by default
 
 ////////////////DMX Config/////////////////
 // first adresse of the board
