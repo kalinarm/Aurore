@@ -150,9 +150,10 @@ class StepperMotorControl {
       }
 
       int  speed = map(sensCmd, 21, 255, 0, STEPPERS_MAX_SPEED);
-      long pos = map(posCmd, 0, 255, 0.0, STEPPERS_STEPS_DISTANCE);
-      stepper.moveTo(-pos * m_sens);
-      stepper.setMaxSpeed(speed);
+      long pos = m_sens * -map(posCmd, 0, 255, 0.0, STEPPERS_STEPS_DISTANCE);
+      stepper.moveTo(pos);
+      stepper.setSpeed(sgn(pos - stepper.currentPosition()) * speed);
+      //stepper.setMaxSpeed(speed);
 
 #ifdef DEBUG
       Serial.print("pos=");
