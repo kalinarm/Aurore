@@ -14,9 +14,11 @@ class StepperMotorControl {
 
   public:
     StepperMotorControl() {
+    
     }
 
     void setup() {
+      stepper.setCurrentPosition(0);
       stepper.setMaxSpeed(350);
       stepper.setAcceleration(200);
       m_speed = 0;
@@ -26,6 +28,11 @@ class StepperMotorControl {
       if (value < 20) stop();
       else if (value < 126) setSpeed(1);
       else setSpeed(-1);
+    }
+
+    void setCalib() {
+      m_speed = 0;
+      stepper.moveTo(0);
     }
 
     void setSpeed(int speed) {

@@ -71,9 +71,13 @@ void processCmdMode(int mode, int intensity, int speed, int offset) {
 #endif
 }
 
-void processCmdStepper(int move) {
+void processCmdStepper(int move, int calib) {
 #ifdef USE_STEPPER_MOTOR
-  stepperMotor.setCmd(move);
+if (calib > 200) {
+  stepperMotor.setCalib();
+}else {
+   stepperMotor.setCmd(move);
+}
 #ifdef DEBUG
   Serial.print("stepper move=");
   Serial.print(move);

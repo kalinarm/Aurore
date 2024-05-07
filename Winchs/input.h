@@ -91,14 +91,6 @@ void processInput() {
 
     if (strlen(receivedChars) == 0) return;
 
-    if (receivedChars[0] == '?') {
-      Serial.println("to control a mode ,send a command in the format ");
-      Serial.println("[mode] [intensity] [speed] [offset]");
-      Serial.println("to control stepper ,send a command in the format ");
-      Serial.println("110 [direction] [speed]");
-      return;
-    }
-
     strToArguments(receivedChars);
   }
 }

@@ -40,7 +40,7 @@ void loopDmx() {
   }
 
   if (hasChangedStepper) {
-    processCmdStepper(commands[0]);
+    processCmdStepper(commands[0], commands[1]);
     hasChangedStepper = false;
   }
   if (hasChangedServo) {
